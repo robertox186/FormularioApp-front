@@ -1,21 +1,21 @@
 <ion-header color='ligth'>
   <ion-toolbar >
-    <ion-title>login</ion-title>
+    <ion-title>Formulario-App</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color ="dark">
+<ion-content color ="dark" style="text-align: center;">
 
-  <ion-card color="light">
-    <ion-card-header color="light">
+  <ion-card color="light" class="card">
+    <ion-card-header color="secundary">
       
-     
+     <ion-card-title><h3>Login</h3></ion-card-title>
     
     </ion-card-header>
-    <ion-card-content color="light">
+    <ion-card-content color="light" class='content'>
      
        <form [formGroup]="elForm" (ngSubmit)="iniciar()" novalidate>
-      <ion-item color="light">
+      <ion-item color="light" class="input">
         <ion-label position="floating" >Email</ion-label>
         <ion-input type="email" formControlName="correo"  autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
       </ion-item>
@@ -24,24 +24,24 @@
       </ion-item>
       <ion-item *ngIf="elForm.get('correo').errors && elForm.get('correo').dirty">
         <p color="danger" ion-text *ngIf="elForm.get('correo').hasError('required')">este campo es requerido</p>
-      </ion-item>
-      <ion-item color="light">
+      </ion-item >
+      <ion-item color="light"  class="input">
         <ion-label position="floating" >password</ion-label>
         <ion-input type="password" formControlName="password"  autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
-      </ion-item>
+      </ion-item >
       <ion-item *ngIf="elForm.get('password').errors && elForm.get('password').dirty">
         <p color="danger" ion-text *ngIf="elForm.get('password').hasError('required')">este campo es requerido</p>
       </ion-item>
     
       
-      <ion-button expand="full" type="submit" [disabled]="elForm.invalid">iniciar sesion</ion-button>
+      <ion-button expand="full" type="submit" [disabled]="elForm.invalid" class="input">iniciar sesion</ion-button>
     
     
     </form>
     
       
     
-      <ion-button color="danger" expand="full" routerLink="/registro">registrarse</ion-button>
+      <ion-button color="danger" expand="full" routerLink="/registro"  class="input">registrarse</ion-button>
     
     </ion-card-content>
     </ion-card>
