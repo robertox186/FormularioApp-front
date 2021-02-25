@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {LoadingController} from '@ionic/angular'
+import {LoadingController,MenuController} from '@ionic/angular'
 import { FormGroup, FormBuilder,Validators  } from '@angular/forms';
 import {AuthService} from '../../services/auth.service'
 @Component({
@@ -10,16 +10,16 @@ import {AuthService} from '../../services/auth.service'
 })
 export class RegistroPage implements OnInit {
 
-  constructor(private router:Router, public fb: FormBuilder,private load:LoadingController,private auth:AuthService) { }
+  constructor(private router:Router, public fb: FormBuilder,private load:LoadingController,private auth:AuthService,private menu:MenuController) { }
 
 
-  
+  private respuesta:any;
   myForm:FormGroup = this.fb.group({
     
     username: [, [Validators.required]],
     email: [, [Validators.required,Validators.email]],
 
-    password: [, [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/)]],
+    contraseña: [, [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/)]],
     pass2: [, [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/)]],
     
     edad: [, [Validators.required,Validators.minLength(15),Validators.maxLength(100)]],
@@ -27,12 +27,39 @@ export class RegistroPage implements OnInit {
    
   });
   ngOnInit() {
+  this.menu.enable(false)
   }
 registro(){
   
-  alert(JSON.stringify(this.myForm.value))
+  this.load.create({
+    message:"espere...",
+    spinner:'crescent',
+    showBackdrop:true,
+    keyboardClose:true,
+    translucent:true,
+    duration:10000
+    
+  }).then(loading=>{
+  loading.present();
+   this.auth.registro(this.myForm.value).then(res=>{
+      loading.dismiss();
+this.respuesta=res;
+       if(this.respuesta.status==200){
 
-}
+
+       }else {
+         alert("error...")
+
+       }
+
+   }).catch(err=>{
+        loading.dismiss();
+    alert("error verifice su conexion")
+   })
 
   
+
+
+})
+}
 }

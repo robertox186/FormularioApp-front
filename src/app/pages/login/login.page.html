@@ -17,20 +17,20 @@
        <form [formGroup]="elForm" (ngSubmit)="iniciar()" novalidate>
       <ion-item color="light" class="input">
         <ion-label position="floating" >Email</ion-label>
-        <ion-input type="email" formControlName="correo"  autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
+        <ion-input type="email" formControlName="email"  autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
       </ion-item>
-      <ion-item *ngIf="elForm.get('correo').errors && elForm.get('correo').dirty">
+      <ion-item *ngIf="elForm.get('email').errors && elForm.get('email').dirty">
         <p color="danger" ion-text *ngIf="elForm.get('correo').hasError('email')">el valor ingresado no corresponde a un correo electronico</p>
       </ion-item>
-      <ion-item *ngIf="elForm.get('correo').errors && elForm.get('correo').dirty">
-        <p color="danger" ion-text *ngIf="elForm.get('correo').hasError('required')">este campo es requerido</p>
+      <ion-item *ngIf="elForm.get('email').errors && elForm.get('email').dirty">
+        <p color="danger" ion-text *ngIf="elForm.get('email').hasError('required')">este campo es requerido</p>
       </ion-item >
       <ion-item color="light"  class="input">
         <ion-label position="floating" >password</ion-label>
-        <ion-input type="password" formControlName="password"  autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
+        <ion-input type="password" formControlName="contraseña"  autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
       </ion-item >
-      <ion-item *ngIf="elForm.get('password').errors && elForm.get('password').dirty">
-        <p color="danger" ion-text *ngIf="elForm.get('password').hasError('required')">este campo es requerido</p>
+      <ion-item *ngIf="elForm.get('contraseña').errors && elForm.get('contraseña').dirty">
+        <p color="danger" ion-text *ngIf="elForm.get('contraseña').hasError('required')">este campo es requerido</p>
       </ion-item>
     
       

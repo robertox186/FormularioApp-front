@@ -16,7 +16,7 @@ export class AuthService {
         }
       
       }
-      var url="http:\\localhost:8000\login";
+      var url="//localhost:3000/login";
       return new Promise(resolve => {
       this.http.post(url,info,options)
          .subscribe(data => {
@@ -35,7 +35,7 @@ export class AuthService {
           }
         
         }
-        var url="";
+        var url="//localhost:3000/registro";
         return new Promise(resolve => {
         this.http.post(url,info,options)
            .subscribe(data => {

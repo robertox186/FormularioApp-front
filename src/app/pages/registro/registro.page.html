@@ -15,7 +15,7 @@
     <ion-card-content color="light" class='content' >
 
       <form [formGroup]="myForm" (ngSubmit)="registro()" novalidate >
-        <ion-list >
+       
           <ion-item color="light" class="input">
             <ion-label position="floating" >Username</ion-label>
             <ion-input type="text" formControlName="username"  autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
@@ -29,7 +29,7 @@
           
           <ion-item color="light"  class="input">
             <ion-label position="floating" >password</ion-label>
-            <ion-input type="password" formControlName="password"   autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
+            <ion-input type="password" formControlName="contraseña"   autocapitalize="off" autocomplete="off" autocorrect="off"></ion-input>
           
           </ion-item>
        
@@ -48,14 +48,13 @@
           <ion-item color="light"  class="input">
             <ion-label position="floating" >sexo</ion-label>
             <ion-select   formControlName="genero">
-             <ion-select-option value=true >hombre</ion-select-option>
-             <ion-select-option value=false >mujer</ion-select-option>
+             <ion-select-option value=hombre >hombre</ion-select-option>
+             <ion-select-option value=mujer >mujer</ion-select-option>
 
             </ion-select>
           </ion-item>
           
           
-        </ion-list>
           <ion-button expand="full"type="submit"  [disabled]="myForm.invalid"  >registrarse</ion-button>
       </form>
           <ion-button color="danger" expand="full" routerLink="/login">ya tienes cuenta?</ion-button>

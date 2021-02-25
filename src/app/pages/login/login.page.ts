@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {LoadingController} from '@ionic/angular'
+import {LoadingController,MenuController} from '@ionic/angular'
 import { FormGroup, FormBuilder,Validators  } from '@angular/forms';
-import {AuthService} from '../../services/auth.service'
+import {AuthService} from '../../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,12 +13,12 @@ export class LoginPage implements OnInit {
  respuesta:any;
   elForm:FormGroup = this.fb.group({
     
-    correo: [, [Validators.required,Validators.email]],
+    email: [, [Validators.required,Validators.email]],
 
-    password: [, [Validators.required]]
+    contraseña: [, [Validators.required]]
    
   });
-  constructor( private router:Router, public fb: FormBuilder,private load:LoadingController,private auth:AuthService) { }
+  constructor( private router:Router, public fb: FormBuilder,private load:LoadingController,private auth:AuthService,private menu:MenuController) { }
   
     iniciar(){
 
@@ -27,13 +28,16 @@ export class LoginPage implements OnInit {
         spinner:'crescent',
         showBackdrop:true,
         keyboardClose:true,
-        translucent:true
+        translucent:true,
+        duration:10000
         
       }).then(loading=>{
       loading.present();
        this.auth.login(this.elForm.value).then(res=>{
           loading.dismiss();
 this.respuesta=res;
+console.log(this.respuesta)
+alert(JSON.stringify(this.respuesta))
            if(this.respuesta.status==200){
 
 
@@ -44,17 +48,17 @@ this.respuesta=res;
 
        }).catch(err=>{
             loading.dismiss();
+            console.log(err)
         alert("error verifice su conexion")
        })
          // aqui iria la peticion al servidor
         
-        setTimeout(()=>{
-loading.dismiss();
-        },3000)
-
+        
       })
     }
   ngOnInit() {
+
+    this.menu.enable(false);
   }
 
 }
