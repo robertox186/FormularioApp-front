@@ -17,6 +17,7 @@ console.log(this.res)
 }
 
   ngOnInit() {
+    console.log(this.pre)
   }
 
 }

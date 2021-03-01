@@ -12,7 +12,7 @@
 
   <ion-card-content>
 <ion-list>
-  <ion-item *ngFor="let pre of preguntas;let i=index;">
+  <ion-item *ngFor="let pre of form.preguntas;let i=index;">
 <pregunta [pre]="pre"  (res)="getData($event,i)"></pregunta>
 </ion-item>
 <ion-button (click)="mostrar()">mostrar</ion-button>

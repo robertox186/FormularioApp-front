@@ -1,3 +1,4 @@
+import { formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-form',
@@ -6,18 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormPage implements OnInit {
 
-  private form:any={title:'prueba',descripcion:'este es un form',preguntas:[{title:'usted es casado?',input:'select'},{title:'donde vive?',input:'text'},{title:'que edad tiene?',input:'number'}]}
-  private preguntas:Array<any>=this.form.preguntas;
+  private form:any=
+  {title:'prueba',descripcion:'este es un form',preguntas:[{title:'usted es casado?',input:'date'},{title:'donde vive?',input:'text'},{title:'que edad tiene?',input:'number'}]}
+ 
 
-  private  data:any[]=this.preguntas;
+  private  data:any=this.form.preguntas;
   constructor() { }
 getData(data:any,index:number){
   console.log(data)
-let info={title:this.form.title,respuesta:data}
-  this.data[index]=info;
-
+let info= {...this.data[index],data}
+this.data[index]=info;
 }
 mostrar(){
+  
   alert(JSON.stringify(this.data))
 }
   ngOnInit() {
