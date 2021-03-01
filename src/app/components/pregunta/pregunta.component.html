@@ -1,0 +1,10 @@
+
+<ion-item class="title">
+<ion-label position="floating">{{pre.title}}</ion-label>
+<ion-input type="number"  *ngIf='pre.input=="number"'   [(ngModel)]="resp"    (ngModelChange)='enviar()'></ion-input>
+<ion-input type="text"  *ngIf='pre.input=="text"'  [(ngModel)]="resp" (ngModelChange)='enviar()'></ion-input>
+<ion-select *ngIf='pre.input=="select"'  [(ngModel)]="resp"    (ngModelChange)='enviar()'>
+<ion-select-option   value="si">si</ion-select-option>
+<ion-select-option  value="no">no</ion-select-option>
+</ion-select>
+</ion-item>
