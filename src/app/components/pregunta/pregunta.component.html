@@ -3,12 +3,12 @@
 <ion-label position="floating">{{pre.title}}</ion-label>
 
     <div [ngSwitch]="pre.input">
-      <ion-input *ngSwitchCase="'text'" type="text" [(ngModel)]="resp"        (ngModelChange)="enviar()"   required></ion-input>
-      <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="resp"  (ngModelChange)="enviar()" required></ion-input>
-      <ion-input *ngSwitchCase="'number'" type="number" [(ngModel)]="resp"  (ngModelChange)="enviar()" required></ion-input>
-      <ion-input *ngSwitchCase="'email'" type="email" [(ngModel)]="resp"  (ngModelChange)="enviar()" required></ion-input>
-      <ion-input *ngSwitchCase="'date'" type="date" [(ngModel)]="resp"  (ngModelChange)="enviar()" required></ion-input>
-      <ion-input *ngSwitchDefault [(ngModel)]="resp" (ngModelChange)="enviar()"  required></ion-input>
+      <ion-input *ngSwitchCase="'text'" type="text" [(ngModel)]="mod"        (ngModelChange)="OnChanges()"   required></ion-input>
+      <ion-input *ngSwitchCase="'password'" type="password" [(ngModel)]="mod"  (ngModelChange)="OnChanges()" required></ion-input>
+      <ion-input *ngSwitchCase="'number'" type="number" [(ngModel)]="mod"  (ngModelChange)="OnChanges()" required></ion-input>
+      <ion-input *ngSwitchCase="'email'" type="email" [(ngModel)]="mod"  (ngModelChange)="OnChanges()" required></ion-input>
+      <ion-input *ngSwitchCase="'date'" type="date" [(ngModel)]="mod"  (ngModelChange)="OnChanges()" required></ion-input>
+      <ion-input *ngSwitchDefault [(ngModel)]="mod" (ngModelChange)="OnChanges()"  required></ion-input>
     </div>
 
 </ion-item>

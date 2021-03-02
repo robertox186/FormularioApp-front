@@ -6,18 +6,20 @@ import { Component, Input, OnInit ,Output,EventEmitter,OnChanges} from '@angular
   styleUrls: ['./pregunta.component.scss'],
 })
 export class PreguntaComponent implements OnInit {
- @Output() res:EventEmitter<any>=new EventEmitter<any>();
+ @Output() res=new EventEmitter();
 private resp:any;
 @Input() pre:any;
+@Input() mod:any;
+
   constructor() { }
-enviar(){
-console.log(this.res)
-  this.res.emit(this.resp);
 
+OnChanges(){
+  console.log("resp"+this.resp);
+  let resp=this.resp;
+  this.res.emit(this.mod);
 }
-
   ngOnInit() {
-    console.log(this.pre)
+    console.log("inicia")
   }
 
 }

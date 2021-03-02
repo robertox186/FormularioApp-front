@@ -11,11 +11,12 @@ export class FormPage implements OnInit {
   {title:'prueba',descripcion:'este es un form',preguntas:[{title:'usted es casado?',input:'date'},{title:'donde vive?',input:'text'},{title:'que edad tiene?',input:'number'}]}
  
 
-  private  data:any=this.form.preguntas;
+  private  data:any=[...this.form.preguntas];
+private rest:any=[...this.form.preguntas];
   constructor() { }
 getData(data:any,index:number){
-  console.log(data)
-let info= {...this.data[index],data}
+  console.log("data  "+data)
+let info= {...this.data[index],data};
 this.data[index]=info;
 }
 mostrar(){
