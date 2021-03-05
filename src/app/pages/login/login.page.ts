@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
         showBackdrop:true,
         keyboardClose:true,
         translucent:true,
-        duration:10000
+       
         
       }).then(loading=>{
       loading.present();
@@ -37,12 +37,12 @@ export class LoginPage implements OnInit {
           loading.dismiss();
 this.respuesta=res;
 console.log(this.respuesta)
-alert(JSON.stringify(this.respuesta))
+
            if(this.respuesta.status==200){
-
-
+                 localStorage.setItem("user",JSON.stringify(this.respuesta.body))
+    this.router.navigate(['/menu']);
            }else {
-             alert("error...")
+             alert("error:  "+this.respuesta.status)
 
            }
 

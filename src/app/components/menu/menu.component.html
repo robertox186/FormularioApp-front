@@ -1,0 +1,9 @@
+<ion-item  (click)="mostrar()">
+<ion-title>{{m.title}}</ion-title>
+
+</ion-item>
+<div *ngIf="ocultar">
+<ion-item  *ngFor="let menu of submenus"  >
+<menu   [m]="menu"  [menus]="menus"  ></menu>
+</ion-item>
+</div>

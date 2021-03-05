@@ -37,20 +37,20 @@ registro(){
     showBackdrop:true,
     keyboardClose:true,
     translucent:true,
-    duration:10000
+
     
   }).then(loading=>{
   loading.present();
    this.auth.registro(this.myForm.value).then(res=>{
       loading.dismiss();
 this.respuesta=res;
-       if(this.respuesta.status==200){
+if(this.respuesta.status==200){
+  localStorage.setItem("user",JSON.stringify(this.respuesta.body))
+this.router.navigate(['/menu']);
+}else {
+alert("error:  "+this.respuesta.status)
 
-
-       }else {
-         alert("error...")
-
-       }
+}
 
    }).catch(err=>{
         loading.dismiss();
