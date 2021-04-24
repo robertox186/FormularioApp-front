@@ -16,7 +16,7 @@ export class AuthService {
         }
       
       }
-      var url="//localhost:3000/login";
+      var url="//https://formulario12345.herokuapp.com/login";
       return new Promise(resolve => {
       this.http.post(url,info,options)
          .subscribe(data => {
@@ -35,7 +35,7 @@ export class AuthService {
           }
         
         }
-        var url="//localhost:3000/registro";
+        var url="//https://formulario12345.herokuapp.com/registro";
         return new Promise(resolve => {
         this.http.post(url,info,options)
            .subscribe(data => {
