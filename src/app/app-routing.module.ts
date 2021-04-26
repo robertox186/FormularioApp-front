@@ -27,6 +27,14 @@ const routes: Routes = [
   {
     path: 'form',
     loadChildren: () => import('./pages/form/form.module').then( m => m.FormPageModule)
+  },
+  {
+    path: 'add-menu',
+    loadChildren: () => import('./pages/add-menu/add-menu.module').then( m => m.AddMenuPageModule)
+  },
+  {
+    path: 'add-form',
+    loadChildren: () => import('./pages/add-form/add-form.module').then( m => m.AddFormPageModule)
   }
 ];
 

@@ -1,20 +1,79 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuService} from '../../services/menu/menu.service';
+import {ModalController,LoadingController} from '@ionic/angular';
+import {AddMenuPage} from '../add-menu/add-menu.page';
+import {FormService} from '../../services/form/form.service';
 
+import{Router} from '@angular/router'
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-menus:any=[{ id_menu:1,title:"menu 1",description:"este es el  menu 1",parent_menu:0},{ id_menu:2,title:"menu 1",description:"este es el  menu 2",parent_menu:0},{ id_menu:3,title:"menu 3",description:"este es el  menu 3",parent_menu:0},{ id_menu:4,title:"menu 4",description:"este es el  menu 4",parent_menu:1},{ id_menu:5,title:"menu 5",description:"este es el  menu 5",parent_menu:1},{ id_menu:6,title:"menu 6",description:"este es el  menu 6",parent_menu:2},{ id_menu:7,title:"menu 7",description:"este es el  menu 7",parent_menu:3},{ id_menu:8,title:"menu 8",description:"este es el  menu 8",parent_menu:4},]
+menus:any=[]
+forms:any=[];
+user:boolean;
   submenus:any; 
-constructor() { }
+constructor(private http:MenuService,private modal:ModalController,private load:LoadingController,private form:FormService,private router:Router) { }
+ 
+nuevo(){
+
+  this.http.setInfo(0);
+    this.router.navigate(['add-menu',])
+  
+  }
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['login'])
+  }
 getMenusRaices(){
 
   this.submenus= this.menus.filter(menu=> menu.parent_menu==0);
+
 }
-  ngOnInit() {
-    this.getMenusRaices();
+   async getMenus(){
+    await this.http.selectMenu().then((res:any)=>{
+
+          if(res.status == 200){
+
+this.menus=res.body;
+this.getMenusRaices();
+console.log(this.menus)
+          }else{
+            alert("error")
+          }
+
+    })
   }
+  async getForms(){
+    await this.form.selectAllForm().then((res:any)=>{
+
+          if(res.status == 200){
+
+this.forms=res.body;
+console.log(this.forms)
+          }else{
+            alert("error")
+          }
+
+    })
+  }
+  ngOnInit() {
+
+  
+  }
+  ionViewWillEnter(){ 
+     
+this.getMenus();
+    console.log("ciclo");
+  this.getForms();
+
+  let user:any=JSON.parse(localStorage.getItem('user'))
+  
+   console.log(user)
+  this.user=user.admin
+}
+
 
 }

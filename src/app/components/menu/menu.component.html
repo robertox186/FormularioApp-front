@@ -1,9 +1,26 @@
-<ion-item  (click)="mostrar()">
-<ion-title>{{m.title}}</ion-title>
 
-</ion-item>
+<div class="div">
+    <div class="submenus">
+<div>
+<ion-title (click)="mostrar()">{{m.titulo}}</ion-title>
+
+</div>
 <div *ngIf="ocultar">
 <ion-item  *ngFor="let menu of submenus"  >
-<menu   [m]="menu"  [menus]="menus"  ></menu>
+<menu   [m]="menu"  [menus]="menus" [forms]="forms"  ></menu>
 </ion-item>
+<ion-item *ngFor="let form of forms;let i=index">
+    <div *ngIf="m.id_menu == form.id_menu" class="form">
+<ion-icon name="reader-outline" class="icon-form"></ion-icon>
+<ion-title (click)="l(form)">{{form.title_form}}</ion-title>
+<ion-icon name="close" (click)="deleteForm(form)" class="icon-form"></ion-icon>
+</div>
+</ion-item>
+</div>
+</div>
+<div class="icons">
+    <ion-icon name="add" (click)="nuevo()" *ngIf="user"></ion-icon>
+    <ion-icon name="reader-outline" (click)="addform()" *ngIf="user"></ion-icon>
+<ion-icon name="close" (click)="delete()" *ngIf="user"></ion-icon>
+</div>
 </div>

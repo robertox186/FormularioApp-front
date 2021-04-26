@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="arrow-back" (click)="back()"></ion-icon>
+    <ion-title>add-form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-button (click)="save()" expand="full">guardar</ion-button>
+<ion-item>
+  <ion-label>titulo para el formulario</ion-label>
+  <ion-input type="text" [(ngModel)]="form.title"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>descripcion del formulario</ion-label>
+  <ion-input type="text" [(ngModel)]="form.descripcion"></ion-input>
+</ion-item>
+<ion-item *ngFor="let g of form.preguntas;let i=index">
+<ion-label>{{g.title}}</ion-label>
+<ion-icon name="close" (click)="quit(i)"></ion-icon>
+</ion-item>
+
+
+<div>
+  <ion-input  type="text" placeholder="agrega una pregunta" [(ngModel)]="pregunta.title" ></ion-input>
+  <ion-select [(ngModel)]="pregunta.input">
+   <ion-select-option  value="text" >
+     text
+   </ion-select-option> 
+   <ion-select-option  value="number">
+    number
+  </ion-select-option> 
+  <ion-select-option value="date">
+date 
+ </ion-select-option> 
+
+
+  </ion-select>
+  <ion-button (click)="add()" expand="full">agregar</ion-button>
+</div>
+</div>
+</ion-content>

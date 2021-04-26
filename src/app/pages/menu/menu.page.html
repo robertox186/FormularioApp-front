@@ -1,14 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>menu</ion-title>
+    <ion-button (click)="logout()" slot="end">cerrar sesion</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<ion-item>
+<ion-title> menu de formularios!</ion-title>
+<ion-icon name="add" *ngIf="user" (click)="nuevo()"></ion-icon>
+</ion-item>
 <ion-item  *ngFor="let menu of submenus">
 
-  <menu  [menus]="menus" [m]="menu"></menu>
+  <menu  [menus]="menus" [m]="menu" [forms]="forms"></menu>
 </ion-item>
 
 

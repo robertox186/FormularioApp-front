@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="arrow-back" (click)="back();"></ion-icon>
+    <ion-title>add-menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+  <ion-label position="floating"> como se llamara el menu?</ion-label>
+<ion-input type="text" [(ngModel)]="title"> </ion-input>
+
+
+
+</ion-item>
+<ion-button (click)="nuevo()">crear</ion-button>
+</ion-content>
